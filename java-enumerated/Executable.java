@@ -4,7 +4,10 @@ import java.util.Map;
 public class Executable {
 
     public static void main(String[] args) {
-        System.out.println(Departament.MAP_DEPARTAMENT.get("13").value);
+
+        System.out.println("150015".substring(0,2));
+
+        System.out.println(Departament.MAP_DEPARTAMENT.get("10").getValue());
     }
 
     enum Departament {
@@ -54,6 +57,8 @@ public class Executable {
 
         static {
             for (Departament d : values()) {
+                System.out.println(d.code);
+                
                 MAP_DEPARTAMENT.put(d.getCode(), d);
             }
         }
@@ -103,6 +108,7 @@ public class Executable {
 
         public static Enumerated getCodeUbigeo(String code) {
 
+           
             for (Enumerated e : values()) {
                 if (e.code.equals(code)) {
                     return e;
