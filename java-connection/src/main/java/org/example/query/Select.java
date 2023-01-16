@@ -6,6 +6,7 @@ import org.example.connection.ConnectionDb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,12 @@ public class Select implements ISelect {
 
         } catch (Exception e) {
             System.out.println("Error de consulta " + e.getMessage());
+        }try {
+            result.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error de cierre de session " + e.getMessage());
         }
 
         return persona;
@@ -66,6 +73,12 @@ public class Select implements ISelect {
 
         } catch (Exception e) {
             System.out.println("Error de consulta " + e.getMessage());
+        }try {
+            result.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error de cierre de session " + e.getMessage());
         }
 
         return persona;
@@ -91,6 +104,14 @@ public class Select implements ISelect {
             }
         } catch (Exception e) {
             System.out.println("Error de consulta " + e.getMessage());
+        } finally {
+            try {
+                result.close();
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println("Error de cierre de session " + e.getMessage());
+            }
         }
 
         return personas;
